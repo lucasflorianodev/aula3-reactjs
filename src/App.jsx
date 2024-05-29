@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import EstouConseguindoAprenderReact from "./components/EstouConseguindoAprenderReact";
+import Aluno from './components/Aluno';
+import Aluno2 from './components/Aluno2';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const alunos = [
+      { nome: "Emilly Vilar", email: "emillyvilar@example.com", curso: "Farmácia", media: 9.5 },
+      { nome: "Lucas Floriano", email: "lucasfloriano@example.com", curso: "Sistemas de Informação", media: 8.0 },
+      { nome: "Ricardo Aurélio", email: "aurelioricardo@example.com", curso: "Farmácia", media: 10 }
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+          {alunos.map((aluno, index) => (
+              <div className="card" key={index}>
+                  <Aluno2
+                      nome={aluno.nome}
+                      email={aluno.email}
+                      curso={aluno.curso}
+                      media={aluno.media}
+                  />
+              </div>
+          ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
